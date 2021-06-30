@@ -5,6 +5,7 @@ import {
 } from 'reactstrap'
 import axios from 'axios'
 import { CartContext } from '../contexts/Cart';
+import AddToCart from '../components/AddToCart'
 
 
 class Product extends Component {
@@ -35,9 +36,10 @@ class Product extends Component {
                                 <CardBody>
                                     <CardTitle tag="h5">{product.name}</CardTitle>
                                     <CardText>{product.des}</CardText>
-                                    <CartContext.Consumer>
+                                    {/* <CartContext.Consumer>
                                         {({ addToCart }) => <Button onClick={() => addToCart(product)}>Add to cart</Button>}
-                                    </CartContext.Consumer>
+                                    </CartContext.Consumer> */}
+                                    <AddToCart product={product}/>
                                 </CardBody>
                             </Card>
                         </Col>

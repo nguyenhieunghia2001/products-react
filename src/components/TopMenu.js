@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import {
     Collapse,
     Navbar,
@@ -7,7 +7,6 @@ import {
     Nav,
     NavItem,
     NavLink,
-    NavbarText
 } from 'reactstrap';
 import {
     Link
@@ -18,19 +17,18 @@ import { CartContext } from '../contexts/Cart'
 const TopMenu = (props) => {
     const [isOpen, setIsOpen] = useState(false);
     const toggle = () => setIsOpen(!isOpen);
+    const { cartItems } = useContext(CartContext)
 
     return (
         <div>
             <Navbar color="light" light expand="md">
-                <NavbarBrand href="/">reactstrap</NavbarBrand>
+                <NavbarBrand href="/">Products</NavbarBrand>
                 <NavbarToggler onClick={toggle} />
                 <Collapse isOpen={isOpen} navbar className="justify-content-end">
                     <Nav className="mr-auto" navbar>
                         <NavItem>
                             <NavLink>
-                                <CartContext.Consumer>
-                                    {({ cartItems }) => (<Link to="/">Giỏ hàng ({cartItems.length})</Link>)}
-                                </CartContext.Consumer>
+                                <Link to="/">Giỏ hàng ({cartItems.length})</Link>
                             </NavLink>
                         </NavItem>
                         <NavItem>
